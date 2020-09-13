@@ -1,0 +1,235 @@
+;==========================================================
+;
+;
+;   ██████╗  ██████╗ ██╗  ██╗   ██╗██████╗  █████╗ ██████╗
+;   ██╔══██╗██╔═══██╗██║  ╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══██╗
+;   ██████╔╝██║   ██║██║   ╚████╔╝ ██████╔╝███████║██████╔╝
+;   ██╔═══╝ ██║   ██║██║    ╚██╔╝  ██╔══██╗██╔══██║██╔══██╗
+;   ██║     ╚██████╔╝███████╗██║   ██████╔╝██║  ██║██║  ██║
+;   ╚═╝      ╚═════╝ ╚══════╝╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
+;
+;==========================================================
+
+[colors]
+nord0 = #2E3440
+nord1 = #3B4252
+nord2 = #434C5E
+nord3 = #4C566A
+nord4 = #D8DEE9
+nord5 = #E5E9F0
+nord6 = #ECEFF4
+nord7 = #8FBCBB
+nord8 = #88C0D0
+nord9 = #81A1C1
+nord10 = #5E81AC
+nord11 = #BF616A
+nord12 = #D08770
+nord13 = #EBCB8B
+nord14 = #A3BE8C
+nord15 = #B48EAD
+
+[bar/main]
+width = 100%
+height = 24
+bottom = false
+line-size = 4
+background= ${colors.nord1}
+wm-restack = bspwm
+tray-poistion=right
+
+font-0 = Hack:size=10;3
+font-1 = FontAwesome:size=11;3
+font-2 = Font Awesome 5 Brands Regular:size=11;3
+font-3 = Font Awesome 5 Free Solid:size=11;3
+font-4 = Font Awesome 5 Free Regular:size=11;3
+
+modules-left = bspwm xwindow
+modules-right = alsa eth ip date time
+
+[module/xwindow]
+type = internal/xwindow
+label = %title:0:30:...%
+format-background = ${colors.nord15}
+format-foreground = ${colors.nord0}
+
+[module/xkeyboard]
+type = internal/xkeyboard
+blacklist-0 = num lock
+
+label-layout = %layout%
+label-layout-foreground = ${colors.nord12}
+
+label-indicator-padding = 2
+label-indicator-margin = 1
+label-indicator-background = ${colors.nord12}
+
+[module/bspwm]
+type = internal/bspwm
+
+format = <label-state>
+
+ws-icon-0 = 1; 
+ws-icon-1 = 2; 
+ws-icon-2 = 3;
+ws-icon-3 = 4;
+ws-icon-default = 
+
+label-focused-occupied = %icon%
+label-focused-occupied-foreground = ${colors.nord0}
+label-focused-occupied-background = ${colors.nord8}
+label-focused-occupied-padding = 1
+
+label-focused-urgent = %icon%
+label-focused-urgent-foreground = ${colors.nord0}
+label-focused-urgent-background = ${colors.nord11}
+label-focused-urgent-padding = 1
+
+label-focused-empty = %icon%
+label-focused-empty-foreground = ${colors.nord0}
+label-focused-empty-background = ${colors.nord8}
+label-focused-empty-padding = 1
+
+label-occupied = %icon%
+label-occupied-foreground = ${colors.nord0}
+label-occupied-background = ${colors.nord9}
+label-occupied-padding = 1
+
+label-urgent = %icon% 
+label-urgent-foreground = ${colors.nord0}
+label-urgent-background = ${colors.nord13}
+label-urgent-padding = 1
+
+label-empty = %icon%
+label-empty-foreground = ${colors.nord0}
+label-empty-background = ${colors.nord9}
+label-empty-padding = 1
+
+[module/eth]
+type = internal/network
+interface = enp0s3
+interval = 3.0
+
+label-connected = "  "
+label-disconnected = "  "
+
+format-connected-foreground = ${colors.nord0}
+format-connected-background = ${colors.nord14}
+format-disconnected-foreground = ${colors.nord0}
+format-disconnected-background = ${colors.nord11}
+
+[module/ip]
+type = custom/script
+exec = curl -s http://icanhazip.com
+format = "<label> "
+format-background = ${colors.nord14}
+format-foreground = ${colors.nord0}
+
+[module/pulseaudio]
+type = internal/pulseaudio
+
+label-volume = "  %percentage%% "
+
+label-muted = "  Mute "
+
+format-volume-foreground = ${colors.nord0}
+format-volume-background = ${colors.nord13}
+format-muted-foreground = ${colors.nord0}
+format-muted-background = ${colors.nord13}
+
+
+[module/alsa]
+type = internal/alsa
+
+#format-volume = <label-volume> <bar-volume>
+label-volume = "  %percentage%% "
+
+label-muted = "  muted "
+
+format-volume-foreground = ${colors.nord0}
+format-volume-background = ${colors.nord13}
+format-muted-foreground = ${colors.nord0}
+format-muted-background = ${colors.nord13}
+
+[module/powermenu]
+type = custom/menu
+
+expand-right = true
+
+format-spacing = 1
+
+label-open = "  "
+label-open-foreground = ${colors.nord0}
+label-open-background = ${colors.nord12}
+
+label-close = " "
+label-close-foreground = ${colors.nord0}
+label-lose-background = ${colors.nord12}
+
+label-separator = "|"
+label-separator-foreground = ${colors.nord0}
+label-seperator-background = ${colors.nord12}
+
+menu-0-0 = ""
+menu-0-0-exec = menu-open-1
+menu-0-0-foreground = ${colors.nord0}
+menu-0-0-background = ${colors.nord12}
+
+menu-0-1 = " "
+menu-0-1-exec = menu-open-2
+menu-0-1-foreground = ${colors.nord0}
+menu-0-1-background = ${colors.nord12}
+
+menu-1-0 = " "
+menu-1-0-exec = menu-open-0
+menu-1-0-foreground = ${colors.nord0}
+menu-1-0-background = ${colors.nord12}
+
+menu-1-1 = ""
+menu-1-1-exec = sudo reboot
+menu-1-1-foreground = ${colors.nord0}
+menu-1-1-background = ${colors.nord12}
+
+menu-2-0 = " "
+menu-2-0-exec = sudo poweroff
+menu-2-0-foreground = ${colors.nord0}
+menu-2-0-background = ${colors.nord12}
+
+menu-2-1 = " "
+menu-2-1-exec = menu-open-0
+menu-2-1-foreground = ${colors.nord0}
+menu-2-1-background = ${colors.nord12}
+
+[module/time]
+type = internal/date
+time = %H:%M
+
+label = " %time%"
+
+format-foreground = ${colors.nord0}
+format-background = ${colors.nord15}
+format-padding = 1
+
+[module/date]
+type = internal/date
+
+interval = 60
+
+date = %a %d
+
+label = "  %date% "
+format-foreground = ${colors.nord0}
+format-background = ${colors.nord10}
+
+[settings]
+screenchange-reload = true
+;compositing-background = xor
+;compositing-background = screen
+;compositing-foreground = source
+;compositing-border = over
+;pseudo-transparency = false
+
+[global/wm]
+margin-top = 5
+margin-bottom = 5
+
+; vim:ft=dosini
