@@ -35,7 +35,29 @@ bottom = false
 line-size = 4
 background= ${colors.nord1}
 wm-restack = bspwm
-tray-poistion=right
+
+tray-position = center
+tray-padding = 5
+
+font-0 = Hack:size=10;3
+font-1 = FontAwesome:size=11;3
+font-2 = Font Awesome 5 Brands Regular:size=11;3
+font-3 = Font Awesome 5 Free Solid:size=11;3
+font-4 = Font Awesome 5 Free Regular:size=11;3
+
+modules-left = bspwm xwindow
+modules-right = alsa eth ip date time
+
+[bar/second]
+monitor = HDMI-0
+width = 100%
+height = 24
+bottom = false
+line-size = 4
+background = ${colors.nord1}
+
+tray-position = center
+tray-padding = 5
 
 font-0 = Hack:size=10;3
 font-1 = FontAwesome:size=11;3
@@ -106,7 +128,7 @@ label-empty-padding = 1
 
 [module/eth]
 type = internal/network
-interface = enp0s3
+interface = enp0s31f6
 interval = 3.0
 
 label-connected = "  "
@@ -119,7 +141,7 @@ format-disconnected-background = ${colors.nord11}
 
 [module/ip]
 type = custom/script
-exec = curl -s http://icanhazip.com
+exec = curl -s http://ipecho.net/plain
 format = "<label> "
 format-background = ${colors.nord14}
 format-foreground = ${colors.nord0}
